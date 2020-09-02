@@ -11,17 +11,17 @@ def index():
 
 @app.route('/quotes')
 def quotes():
-	return ""
+	return render_template('quote_list.html')
 
 
 @app.route('/quotes/<int:id>')
 def specificQuote(id):
-	return f"quote id: {id}"
+	return render_template('specific_quote.html')
 
 
-@app.route('quotes/submit')
+@app.route('/quotes/submit')
 def submit():
-	return ""
+	return render_template('submit_quote.html')
 
 
 if __name__ == "__main__":
