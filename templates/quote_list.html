@@ -2,7 +2,17 @@
 {% block title %}Quotes{% endblock %}
 {% block body %}
 
-    <h1>The owl house quotes</h1>
-    <p>Mama is ready for trauma! -Luz</p>
+
+    <h1>The Owl House Quotes</h1>
+
+    <table>
+        {% for quote in quotes %}
+            <tr>
+                <td><a href="/quotes/{{ quote.Id }}">{{ quote.Quote }}</a></td>
+                <td>{{ quote.Source.Person }} -</td>
+                <td>{{ quote.Source.Episode }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}

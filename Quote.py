@@ -1,4 +1,10 @@
-from json_handler import GetJson, AddQuote
+from json_handler import GetJson, SetJson
+
+
+class Source:
+	def __init__(self, person, episode):
+		self.Person = person
+		self.Episode = episode
 
 
 class Quote:
@@ -6,10 +12,7 @@ class Quote:
 		self.Id = id
 		self.Quote = quote
 
-		self.source = {
-			"Person": source["Person"],
-			"Episode": source["Episode"]
-		}
+		self.Source = source
 
 		if self.Id is None:
 			self.SetId()
@@ -22,4 +25,29 @@ class Quote:
 		self.Id = highest_id + 1
 
 	def Save(self):
-		AddQuote(self)
+		new_quote = {
+			"Id": self.Id,
+			"Quote": self.Quote,
+			"Source": {
+				"Person": self.Source.Person,
+				"Episode": self.Source.Episode
+			}
+		}
+
+		structure = GetJson()
+		structure["quotes"].append(new_quote)
+
+		SetJson(structure)
+
+	@staticmethod
+	def GetQuotes():
+		quote_list = []
+
+		for quote in GetJson()["quotes"]:
+			quote_list.append(Quote(
+				quote=quote["Quote"],
+				source=quote["Source"],
+				id=quote["Id"])
+			)
+
+		return quote_list

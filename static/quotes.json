@@ -1,12 +1,20 @@
 {
-	"quotes": [
-		{
-			"Id": 0,
-			"Quote": "Oh, you guys talking about bad girls?",
-			"Source": {
-				"Person": "Eda",
-				"Episode": "Witches Before Wizards"
-			}
-		}
-	]
+    "quotes": [
+        {
+            "Id": 0,
+            "Quote": "Oh, you guys talking about bad girls?",
+            "Source": {
+                "Person": "Eda",
+                "Episode": "Witches Before Wizards"
+            }
+        },
+        {
+            "Id": 1,
+            "Quote": "I respect your cunning but I also hate you for it.",
+            "Source": {
+                "Person": "Eda",
+                "Episode": "The Intruder"
+            }
+        }
+    ]
 }

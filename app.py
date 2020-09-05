@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for
-from json_handler import GetJson
-from Quote import Quote
+from Quote import Quote, Source
 
 app = Flask(__name__)
 app.debug = True
@@ -13,7 +12,8 @@ def index():
 
 @app.route('/quotes')
 def quotes():
-	return render_template('quote_list.html')
+	quotes_list = Quote.GetQuotes()
+	return render_template('quote_list.html', quotes=quotes_list)
 
 
 @app.route('/quotes/<int:id>')
