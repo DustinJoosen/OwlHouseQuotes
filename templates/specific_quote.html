@@ -2,6 +2,8 @@
 {% block title %}Quote{% endblock %}
 {% block body %}
 
-    <h1>*Insert here a specific quote, later*</h1>
+    <p>Quote: {{ quote.Quote }}</p>
+    <p>Person: {{ quote.Source.Person }}</p>
+    <p>Episode: {{ quote.Source.Episode }}</p>
 
 {% endblock %}

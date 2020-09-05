@@ -18,7 +18,11 @@ def quotes():
 
 @app.route('/quotes/<int:id>')
 def specificQuote(id):
-	return render_template('specific_quote.html')
+	quotes_list = Quote.GetQuotes()
+	for quote in quotes_list:
+		if quote.Id == id:
+			quote = Quote(quote.Quote, quote.Source, quote.Id)
+			return render_template("specific_quote.html", quote=quote)
 
 
 @app.route('/quotes/submit')
