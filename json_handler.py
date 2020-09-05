@@ -1,4 +1,5 @@
 import json
+from Quote import Quote
 
 fp = "static/quotes.json"
 
@@ -19,13 +20,26 @@ def AddQuote(quote):
 	new_quote = {
 		"Id": quote.Id,
 		"Quote": quote.Quote,
-		"Source":{
+		"Source": {
 			"Person": quote["Person"],
 			"Episode": quote["Episode"]
 		}
 	}
 
 	structure = GetJson()
-	structure["quotes"].Append(new_quote)
+	structure["quotes"].append(new_quote)
 
 	SetJson(structure)
+
+
+def GetQuotes():
+	quote_list = []
+
+	for quote in GetJson()["quotes"]:
+		quote_list.append(Quote(
+			quote=quote["Quote"],
+			source=quote["Source"],
+			id=quote["Id"])
+		)
+
+	return quote_list

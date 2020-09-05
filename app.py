@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-from json_handler import GetJson, AddQuote
+from json_handler import GetJson
 from Quote import Quote
 
 app = Flask(__name__)

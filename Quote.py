@@ -2,16 +2,17 @@ from json_handler import GetJson, AddQuote
 
 
 class Quote:
-	def __init__(self, Quote, Source):
-		self.Id = None
-		self.Quote = Quote
+	def __init__(self, quote, source, id=None):
+		self.Id = id
+		self.Quote = quote
 
-		self.Source = {
-			"Person": Source["Person"],
-			"Episode": Source["Episode"]
+		self.source = {
+			"Person": source["Person"],
+			"Episode": source["Episode"]
 		}
 
-		self.SetId()
+		if self.Id is None:
+			self.SetId()
 
 	def SetId(self):
 		quote_list = GetJson()
@@ -20,5 +21,5 @@ class Quote:
 		highest_id = max(id_list)
 		self.Id = highest_id + 1
 
-	def SaveQuote(self):
+	def Save(self):
 		AddQuote(self)
