@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Submit a quote{% endblock %}
+{% block head %}
+	<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}
 {% block body %}
 
     <h1>Submit quote</h1>
@@ -14,6 +17,10 @@
         <p>
             {{ form.source_person.label }}<br/>
             {{ form.source_person() }}
+        </p>
+        <p id="specific_source" style="display: none">
+            <label for="source_person_other">Other: </label>
+            <input id="source_person_other" required name="source_person_other" type="text" value="">
         </p>
         <p>
             {{ form.source_episode.label }}<br/>

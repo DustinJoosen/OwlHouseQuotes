@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, redirect, request
 from Quote import Quote, Source
 from Forms import SubmitQuoteForm
 import random
@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = "blightsexual"
 @app.route('/')
 def index():
 	quotes_list = Quote.GetQuotes()
-	random_quote = quotes_list[random.randint(0, len(quotes_list) -1)]
+	random_quote = quotes_list[random.randint(0, len(quotes_list) - 1)]
 
 	return render_template('index.html', quote=random_quote)
 
@@ -36,13 +36,17 @@ def submit():
 	form = SubmitQuoteForm()
 	if form.validate_on_submit():
 		quote = form.quote.data
-		person = form.source_person.data
 		episode = form.source_episode.data
+		person = form.source_person.data
+
+		specific_person = request.form["source_person_other"]
+		if specific_person != "":
+			person = specific_person
 
 		quote = Quote(quote, Source(person, episode))
 		quote.Save()
 
-		return redirect('/')
+		return redirect('/quotes')
 
 	return render_template('submit_quote.html', form=form)
 
