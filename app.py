@@ -1,29 +1,50 @@
-from flask import Flask, render_template, url_for
-from json_handler import GetJson
-from Quote import Quote
+from flask import Flask, render_template, url_for, redirect
+from Quote import Quote, Source
+from Forms import SubmitQuoteForm
+import random
 
 app = Flask(__name__)
 app.debug = True
+app.config['SECRET_KEY'] = "blightsexual"
 
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	quotes_list = Quote.GetQuotes()
+	random_quote = quotes_list[random.randint(0, len(quotes_list) -1)]
+
+	return render_template('index.html', quote=random_quote)
 
 
 @app.route('/quotes')
 def quotes():
-	return render_template('quote_list.html')
+	quotes_list = Quote.GetQuotes()
+	return render_template('quote_list.html', quotes=quotes_list)
 
 
 @app.route('/quotes/<int:id>')
 def specificQuote(id):
-	return render_template('specific_quote.html')
+	quotes_list = Quote.GetQuotes()
+	for quote in quotes_list:
+		if quote.Id == id:
+			quote = Quote(quote.Quote, quote.Source, quote.Id)
+			return render_template("specific_quote.html", quote=quote)
 
 
-@app.route('/quotes/submit')
+@app.route('/quotes/submit', methods=["POST", "GET"])
 def submit():
-	return render_template('submit_quote.html')
+	form = SubmitQuoteForm()
+	if form.validate_on_submit():
+		quote = form.quote.data
+		person = form.source_person.data
+		episode = form.source_episode.data
+
+		quote = Quote(quote, Source(person, episode))
+		quote.Save()
+
+		return redirect('/')
+
+	return render_template('submit_quote.html', form=form)
 
 
 if __name__ == "__main__":
