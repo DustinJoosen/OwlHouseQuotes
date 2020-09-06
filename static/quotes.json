@@ -15,6 +15,22 @@
                 "Person": "Eda",
                 "Episode": "The Intruder"
             }
+        },
+        {
+            "Id": 2,
+            "Quote": "Test",
+            "Source": {
+                "Person": "King",
+                "Episode": "3"
+            }
+        },
+        {
+            "Id": 3,
+            "Quote": "This is a random quote by principal bump",
+            "Source": {
+                "Person": "Principal bump",
+                "Episode": "11"
+            }
         }
     ]
 }
