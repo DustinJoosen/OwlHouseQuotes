@@ -3,6 +3,23 @@
 {% block body %}
 
     <h1>Submit quote</h1>
-    <p>*insert form here, later*</p>
+    <p>(quote will be filtered through manually, every 24 hours)</p>
+
+    <form action="" method="POST" novalidate="novalidate">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.quote.label }}<br/>
+            {{ form.quote() }}
+        </p>
+        <p>
+            {{ form.source_person.label }}<br/>
+            {{ form.source_person() }}
+        </p>
+        <p>
+            {{ form.source_episode.label }}<br/>
+            {{ form.source_episode() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
 
 {% endblock %}

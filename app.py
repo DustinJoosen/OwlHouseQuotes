@@ -1,9 +1,11 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 from Quote import Quote, Source
+from Forms import SubmitQuoteForm
 import random
 
 app = Flask(__name__)
 app.debug = True
+app.config['SECRET_KEY'] = "blightsexual"
 
 
 @app.route('/')
@@ -29,9 +31,20 @@ def specificQuote(id):
 			return render_template("specific_quote.html", quote=quote)
 
 
-@app.route('/quotes/submit')
+@app.route('/quotes/submit', methods=["POST", "GET"])
 def submit():
-	return render_template('submit_quote.html')
+	form = SubmitQuoteForm()
+	if form.validate_on_submit():
+		quote = form.quote.data
+		person = form.source_person.data
+		episode = form.source_episode.data
+
+		quote = Quote(quote, Source(person, episode))
+		quote.Save()
+
+		return redirect('/')
+
+	return render_template('submit_quote.html', form=form)
 
 
 if __name__ == "__main__":
