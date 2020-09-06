@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for
 from Quote import Quote, Source
+import random
 
 app = Flask(__name__)
 app.debug = True
@@ -7,7 +8,10 @@ app.debug = True
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	quotes_list = Quote.GetQuotes()
+	random_quote = quotes_list[random.randint(0, len(quotes_list) -1)]
+
+	return render_template('index.html', quote=random_quote)
 
 
 @app.route('/quotes')
