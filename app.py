@@ -16,12 +16,14 @@ def index():
 	return render_template('index.html', quote=random_quote)
 
 
+@app.route('/quotes/')
 @app.route('/quotes')
 def quotes():
 	quotes_list = Quote.GetQuotes()
 	return render_template('quote_list.html', quotes=quotes_list)
 
 
+@app.route('/quotes/<int:id>/')
 @app.route('/quotes/<int:id>')
 def specificQuote(id):
 	quotes_list = Quote.GetQuotes()
@@ -30,14 +32,20 @@ def specificQuote(id):
 			quote = Quote(quote.Quote, quote.Source, quote.Id)
 			return render_template("specific_quote.html", quote=quote)
 
+	return redirect(f'/quotes/')
 
+
+@app.route('/quotes/submit/', methods=["POST", "GET"])
 @app.route('/quotes/submit', methods=["POST", "GET"])
 def submit():
 	form = SubmitQuoteForm()
 	if form.validate_on_submit():
-		quote = form.quote.data
-		episode = form.source_episode.data
-		person = form.source_person.data
+		try:
+			quote = form.quote.data
+			episode = form.source_episode.data
+			person = form.source_person.data
+		except:
+			return render_template("submit_quote.html", form=form)
 
 		specific_person = request.form["source_person_other"]
 		if specific_person != "":
@@ -49,6 +57,11 @@ def submit():
 		return redirect('/quotes')
 
 	return render_template('submit_quote.html', form=form)
+
+
+@app.errorhandler(404)
+def pageNotFound(e):
+	return render_template("404.html", exception=e), 404
 
 
 if __name__ == "__main__":
