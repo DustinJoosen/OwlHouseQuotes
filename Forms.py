@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
+from json_handler import GetJson
 
 
 persons = ["Eda", "Luz", "King", "Amity", "Willow", "Guz/Augustus", "Lilith", "Other"]
-episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+episodes = GetJson("static/json/episodes.json")["episodes"]
 
 
 class SubmitQuoteForm(FlaskForm):

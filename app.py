@@ -5,7 +5,7 @@ import random
 
 app = Flask(__name__)
 app.debug = True
-app.config['SECRET_KEY'] = "blightsexual"
+app.config['SECRET_KEY'] = "blight_sexual"
 
 
 @app.route('/')

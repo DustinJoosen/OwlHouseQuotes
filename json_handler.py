@@ -1,15 +1,15 @@
 import json
 
-fp = "static/quotes.json"
+fp = "static/json/quotes.json"
 
 
-def GetJson():
-	with open(fp, 'r') as file:
+def GetJson(path=fp):
+	with open(path, 'r') as file:
 		data = json.load(file)
 
 	return data
 
 
-def SetJson(structure):
-	with open(fp, 'w') as file:
+def SetJson(structure, path=fp):
+	with open(path, 'w') as file:
 		file.write(json.dumps(structure, indent=4))

@@ -18,18 +18,10 @@
         },
         {
             "Id": 2,
-            "Quote": "Test",
+            "Quote": "You were never to weak to be my friend, i was to weak to be yours",
             "Source": {
-                "Person": "King",
-                "Episode": "3"
-            }
-        },
-        {
-            "Id": 3,
-            "Quote": "This is a random quote by principal bump",
-            "Source": {
-                "Person": "Principal bump",
-                "Episode": "11"
+                "Person": "Amity",
+                "Episode": "Understanding Willow"
             }
         }
     ]
