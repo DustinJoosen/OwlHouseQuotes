@@ -35,9 +35,12 @@ def specificQuote(id):
 def submit():
 	form = SubmitQuoteForm()
 	if form.validate_on_submit():
-		quote = form.quote.data
-		episode = form.source_episode.data
-		person = form.source_person.data
+		try:
+			quote = form.quote.data
+			episode = form.source_episode.data
+			person = form.source_person.data
+		except:
+			return render_template("submit_quote.html", form=form)
 
 		specific_person = request.form["source_person_other"]
 		if specific_person != "":

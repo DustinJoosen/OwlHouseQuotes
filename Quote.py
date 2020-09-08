@@ -2,7 +2,7 @@ from json_handler import GetJson, SetJson
 
 
 class Source:
-	def __init__(self, person, episode):
+	def __init__(self, person="Unknown", episode=1):
 		self.Person = person
 		self.Episode = episode
 
