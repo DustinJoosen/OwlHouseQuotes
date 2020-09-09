@@ -64,7 +64,6 @@ def submit():
 
 		#checks if the person has been set to 'Other'(if the textbox isn't empty),
 		#if that is the case, change the person propertie to it's value
-		#TODO: make this better validation, as you can now type something, change the person and it's value will stay
 		specific_person = request.form["source_person_other"]
 		if specific_person != "":
 			person = specific_person
