@@ -23,6 +23,22 @@
                 "Person": "Amity",
                 "Episode": "Understanding Willow"
             }
+        },
+        {
+            "Id": 3,
+            "Quote": "Then why were you so easy to curse!",
+            "Source": {
+                "Person": "Lilith",
+                "Episode": "Agony of a Witch"
+            }
+        },
+        {
+            "Id": 4,
+            "Quote": "Ever since grom, you've become soft",
+            "Source": {
+                "Person": "Boscha",
+                "Episode": "Wing It Like Witches"
+            }
         }
     ]
 }

@@ -35,6 +35,7 @@ nav{
 
 .quote_view{
 	background-color: rgb(240, 240, 240);
+    overflow-wrap: break-word;
 }
 .quote_view_quote h3{
 	font-style: italic;
@@ -50,4 +51,14 @@ nav{
 #random_quote_view_holder,
 #specific_quote_view_holder{
     margin-top: 50px;
+}
+
+.form-group{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.form-group select option{
+    padding:10px;
+    font-size:14px;
 }

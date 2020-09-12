@@ -5,28 +5,26 @@
 {% endblock %}
 {% block body %}
 
-    <h1>Submit quote</h1>
-    <p>(quote will be filtered through manually, every 24 hours)</p>
-
-    <form action="" method="POST" novalidate="novalidate">
+    <h1 class="page_header">Submit quote</h1>
+    <form class="container" action="" method="POST" novalidate="novalidate">
         {{ form.hidden_tag() }}
-        <p>
+        <p class="form-group">
             {{ form.quote.label }}<br/>
-            {{ form.quote() }}
+            {{ form.quote(class_="form-control") }}
         </p>
-        <p>
+        <p class="form-group">
             {{ form.source_person.label }}<br/>
-            {{ form.source_person() }}
+            {{ form.source_person(class_="form-control") }}
         </p>
-        <p id="specific_source" style="display: none">
+        <p class="form-group" id="specific_source" style="display: none">
             <label for="source_person_other">Other: </label>
-            <input id="source_person_other" required name="source_person_other" type="text" value="">
+            <input class="form-control" id="source_person_other" required name="source_person_other" type="text" value="">
         </p>
-        <p>
+        <p class="form-group">
             {{ form.source_episode.label }}<br/>
-            {{ form.source_episode() }}
+            {{ form.source_episode(class_="form-control") }}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p class="form-group">{{ form.submit(class_="btn btn-primary") }}</p>
     </form>
 
 {% endblock %}

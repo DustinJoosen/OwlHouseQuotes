@@ -5,7 +5,7 @@ from json_handler import GetJson
 
 
 #data for the select lists#
-persons = ["Eda", "Luz", "King", "Amity", "Willow", "Guz/Augustus", "Lilith", "Other"]
+persons = ["Eda", "Luz", "King", "Amity", "Willow", "Guz", "Lilith", "Other"]
 episodes = GetJson("static/json/episodes.json")["episodes"]
 
 
