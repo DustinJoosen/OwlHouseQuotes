@@ -10,6 +10,7 @@ app.config['SECRET_KEY'] = "blight_sexual"
 
 #the startup page, returns a view with a random quote#
 @app.route('/')
+@app.route('/random')
 def index():
 	#gets a list of all quotes found, and selected a random one#
 	quotes_list = Quote.GetQuotes()
@@ -26,6 +27,8 @@ def quotes():
 	#gets a list of all quotes, and return the list with the view#
 	quotes_list = Quote.GetQuotes()
 	return render_template('quote_list.html', quotes=quotes_list)
+
+	#TODO break the quote into multiple lines, when it becomes too long
 
 
 #returns a view with a specific quote, with the id of the parameter#

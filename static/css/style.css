@@ -62,3 +62,13 @@ nav{
     padding:10px;
     font-size:14px;
 }
+
+.table{
+    margin:10px;
+}
+
+.quote_list_quote{
+    width: 70%;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
