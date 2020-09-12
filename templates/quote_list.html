@@ -1,18 +1,27 @@
 {% extends 'base.html' %}
 {% block title %}Quotes{% endblock %}
 {% block body %}
-
-
-    <h1>The Owl House Quotes</h1>
-
-    <table>
-        {% for quote in quotes %}
+    <h1 class="page_header">All Quotes</h1>
+    <table class="table">
+        <thead>
             <tr>
-                <td><a href="/quotes/{{ quote.Id }}">{{ quote.Quote }}</a></td>
-                <td>{{ quote.Source.Person }} -</td>
-                <td>{{ quote.Source.Episode }}</td>
+                <th>Quote</th>
+                <th>Said by</th>
+                <th>In episode</th>
+                <th>View quote</th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for quote in quotes %}
+                <tr>
+                    <td class="quote_list_quote">{{ quote.Quote }}</td>
+                    <td>{{ quote.Source.Person }}</td>
+                    <td>{{ quote.Source.Episode }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="/quotes/{{ quote.Id }}">See quote</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
-
 {% endblock %}

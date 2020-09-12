@@ -10,6 +10,7 @@ app.config['SECRET_KEY'] = "blight_sexual"
 
 #the startup page, returns a view with a random quote#
 @app.route('/')
+@app.route('/random')
 def index():
 	#gets a list of all quotes found, and selected a random one#
 	quotes_list = Quote.GetQuotes()
@@ -26,6 +27,8 @@ def quotes():
 	#gets a list of all quotes, and return the list with the view#
 	quotes_list = Quote.GetQuotes()
 	return render_template('quote_list.html', quotes=quotes_list)
+
+	#TODO break the quote into multiple lines, when it becomes too long
 
 
 #returns a view with a specific quote, with the id of the parameter#
@@ -81,7 +84,13 @@ def submit():
 #when 404 errors happen, return a specific grid that helps you find the correct url#
 @app.errorhandler(404)
 def pageNotFound(e):
-	return render_template("404.html", exception=e), 404
+	#TODO: add some more sad images in here
+	sad_pictures = [
+		"images/404/sad_luz.png",
+		"images/404/crying_eda.png"
+	]
+
+	return render_template("404.html", path=random.choice(sad_pictures)), 404
 
 
 if __name__ == "__main__":
