@@ -1,3 +1,32 @@
+:root{
+	--main-bg-color: rgb(45, 45, 45);
+	--main-fg-color: lightblue;
+}
+
 #specific_source{
     display: none;
+}
+
+nav{
+	background-color: var(--main-bg-color);
+	color: var(--main-fg-color);
+}
+
+.nav-item{
+    list-style-type: none;
+    margin-top:10px;
+    font-size:16px;
+    border-left:1px solid var(--main-fg-color);
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.nav-item a:hover{
+	text-decoration: none;
+}
+.nav-item a, .navbar-brand{
+    color: var(--main-fg-color);
+}
+.nav-item:first-child{
+	border:none;
 }
