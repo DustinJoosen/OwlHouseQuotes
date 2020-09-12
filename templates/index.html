@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}The owl house quotes{% endblock %}
+{% block title %}The owl House Quotes{% endblock %}
 {% block body %}
 
-<h1>The Owl House Random Quote</h1>
-
-<p>{{ quote.Quote }}</p>
-<p>{{ quote.Source.Person }} - {{ quote.Source.Episode }}</p>
+<h1 class="page_header">Random Quote</h1>
+<div id="random_quote_view_holder">
+    {% include 'partial/_quote.html' %}
+</div>
 
 {% endblock %}
