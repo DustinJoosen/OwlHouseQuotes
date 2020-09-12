@@ -72,3 +72,11 @@ nav{
     overflow-wrap: break-word;
     overflow: hidden;
 }
+
+.sadimage404{
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top:30px;
+}

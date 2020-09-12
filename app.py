@@ -84,7 +84,13 @@ def submit():
 #when 404 errors happen, return a specific grid that helps you find the correct url#
 @app.errorhandler(404)
 def pageNotFound(e):
-	return render_template("404.html", exception=e), 404
+	#TODO: add some more sad images in here
+	sad_pictures = [
+		"images/404/sad_luz.png",
+		"images/404/crying_eda.png"
+	]
+
+	return render_template("404.html", path=random.choice(sad_pictures)), 404
 
 
 if __name__ == "__main__":
