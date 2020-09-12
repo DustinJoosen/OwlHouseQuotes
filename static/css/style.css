@@ -3,13 +3,13 @@
 	--main-fg-color: lightblue;
 }
 
-#specific_source{
-    display: none;
-}
-
 nav{
 	background-color: var(--main-bg-color);
 	color: var(--main-fg-color);
+}
+
+.page_header{
+    text-align: center;
 }
 
 .nav-item{
@@ -17,16 +17,37 @@ nav{
     margin-top:10px;
     font-size:16px;
     border-left:1px solid var(--main-fg-color);
-    padding: 5px 5px 5px 10px;
+    padding: 5px;
+    padding-left:10px;
     cursor: pointer;
     margin-left: 5px;
 }
 .nav-item a:hover{
 	text-decoration: none;
 }
-.nav-item a, .navbar-brand{
+.nav-item a,
+.navbar-brand{
     color: var(--main-fg-color);
 }
 .nav-item:first-child{
 	border:none;
+}
+
+.quote_view{
+	background-color: rgb(240, 240, 240);
+}
+.quote_view_quote h3{
+	font-style: italic;
+}
+.quote_view_source p{
+	display: inline-block;
+	font-size:16px;
+}
+.quote_view_source{
+	float: right;
+}
+
+#random_quote_view_holder,
+#specific_quote_view_holder{
+    margin-top: 50px;
 }

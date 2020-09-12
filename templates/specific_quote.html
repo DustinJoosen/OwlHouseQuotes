@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Quote{% endblock %}
+{% block title %}Quote #{{ quote.Id }}{% endblock %}
 {% block body %}
 
-    <p>Quote: {{ quote.Quote }}</p>
-    <p>Person: {{ quote.Source.Person }}</p>
-    <p>Episode: {{ quote.Source.Episode }}</p>
+<h1 class="page_header">Quote #{{ quote.Id }}</h1>
+<div id="specific_quote_view_holder">
+    {% include 'partial/_quote.html' %}}
+</div>
 
 {% endblock %}
