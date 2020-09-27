@@ -1,23 +1,27 @@
 from flask import Flask, render_template, redirect, request
 from Quote import Quote, Source
 from Forms import SubmitQuoteForm
+from json_handler import GetJson
 import random
+
+settings = GetJson("static/json/app_settings.json")
+pagenames = settings["pageNames"]
 
 app = Flask(__name__)
 app.debug = True
-app.config['SECRET_KEY'] = "blight_sexual"
+app.config['SECRET_KEY'] = settings["secretKey"]
 
 
 #the startup page, returns a view with a random quote#
 @app.route('/')
-@app.route('/random')
+@app.route('/random') 
 def index():
 	#gets a list of all quotes found, and selected a random one#
 	quotes_list = Quote.GetQuotes()
 	random_quote = quotes_list[random.randint(0, len(quotes_list) - 1)]
 
 	#returns the standard view with the random quote as data#
-	return render_template('index.html', quote=random_quote)
+	return render_template(pagenames["random"], quote=random_quote)
 
 
 #returns a view with a list of all the quotes found#
@@ -26,7 +30,7 @@ def index():
 def quotes():
 	#gets a list of all quotes, and return the list with the view#
 	quotes_list = Quote.GetQuotes()
-	return render_template('quote_list.html', quotes=quotes_list)
+	return render_template(pagenames["list"], quotes=quotes_list)
 
 	#TODO break the quote into multiple lines, when it becomes too long
 
@@ -43,7 +47,7 @@ def specificQuote(id):
 		if quote.Id == id:
 			#create a new quote object, and give it to the view#
 			quote = Quote(quote.Quote, quote.Source, quote.Id)
-			return render_template("specific_quote.html", quote=quote)
+			return render_template(pagenames["quote"], quote=quote)
 
 	#when the parameter id is not being used, return to the list#
 	return redirect(f'/quotes/')
@@ -63,7 +67,7 @@ def submit():
 			episode = form.source_episode.data
 			person = form.source_person.data
 		except:
-			return render_template("submit_quote.html", form=form)
+			return render_template(pagenames["form"], form=form)
 
 		#checks if the person has been set to 'Other'(if the textbox isn't empty),
 		#if that is the case, change the person propertie to it's value
@@ -78,7 +82,7 @@ def submit():
 
 		return redirect('/quotes')
 
-	return render_template('submit_quote.html', form=form)
+	return render_template(pagenames["form"], form=form)
 
 
 #when 404 errors happen, return a specific grid that helps you find the correct url#
@@ -90,7 +94,7 @@ def pageNotFound(e):
 		"images/404/crying_eda.png"
 	]
 
-	return render_template("404.html", path=random.choice(sad_pictures)), 404
+	return render_template(pagenames["404"], path=random.choice(sad_pictures)), 404
 
 
 if __name__ == "__main__":

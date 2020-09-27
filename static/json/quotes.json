@@ -40,5 +40,13 @@
                 "Episode": "Wing It Like Witches"
             }
         },
+        {
+            "Id": 5,
+            "Quote": "Nope",
+            "Source": {
+                "Person": "Luz",
+                "Episode": "Witches Before Wizards"
+            }
+        }
     ]
 }

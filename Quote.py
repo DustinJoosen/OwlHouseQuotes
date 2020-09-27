@@ -1,5 +1,7 @@
 from json_handler import GetJson, SetJson
 
+settings = GetJson("static/json/app_settings.json")
+
 
 #used to prevent magic strings, and cleaner code in general
 class Source:
@@ -22,7 +24,7 @@ class Quote:
 
 	#sets a unique id(the highest one + 1)
 	def SetId(self):
-		quote_list = GetJson()
+		quote_list = GetJson(settings["readingQuotesPath"])
 		id_list = [quote["Id"] for quote in quote_list["quotes"]]
 
 		highest_id = max(id_list)
@@ -41,18 +43,17 @@ class Quote:
 		}
 
 		#retrieves json and add to it#
-		structure = GetJson()
+		structure = GetJson(settings["readingQuotesPath"])
 		structure["quotes"].append(new_quote)
 
 		#saves the new json data
-		SetJson(structure)
+		SetJson(structure, settings["writingQuotesPath"])
 
 	#project wide method used to get a list of all the quotes, formatted to be objects of Quote#
 	@staticmethod
 	def GetQuotes():
 		quote_list = []
-
-		for quote in GetJson()["quotes"]:
+		for quote in GetJson(settings["readingQuotesPath"])["quotes"]:
 			quote_list.append(Quote(
 				quote=quote["Quote"],
 				source=quote["Source"],

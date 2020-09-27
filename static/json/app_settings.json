@@ -1,0 +1,12 @@
+{
+	"readingQuotesPath": "static/json/quotes.json",
+	"writingQuotesPath": "static/json/quotes.json",
+	"secretKey": "blight_sexual",
+	"pageNames": {
+		"404": "404.html",
+		"random": "index.html",
+		"list": "quote_list.html",
+		"quote": "specific_quote.html",
+		"form": "submit_quote.html"
+	}
+}
